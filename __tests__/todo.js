@@ -1,5 +1,5 @@
 const request = require("supertest");
-const cheerio = require("cheerio");
+var cheerio = require("cheerio");
 const db = require("../models/index");
 const app = require("../app");
 
@@ -64,23 +64,6 @@ describe("Todo Application", function () {
     const parsedUpdateResponse = JSON.parse(markCompleteResponse.text);
     expect(parsedUpdateResponse.completed).toBe(true);
   });
-
-  // test("Fetches all todos in the database using /todos endpoint", async () => {
-  //   let res = await agent.get("/");
-  //   let csrfToken = extractCSRFToken(res.text);
-
-  //   await agent.post("/todos").send({
-  //     title: "Buy a box",
-  //     dueDate: new Date().toISOString(),
-  //     _csrf: csrfToken,
-  //   });
-
-  //   const response = await agent.get("/todos");
-  //   const parsedResponse = JSON.parse(response.text);
-
-  //   expect(parsedResponse.length).toBe(3);
-  //   expect(parsedResponse[2].title).toBe("Buy xbox");
-  // });
 
   test("Deletes a todo with the given ID", async () => {
     let res = await agent.get("/");

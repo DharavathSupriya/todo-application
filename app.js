@@ -57,12 +57,12 @@ app.get("/todos/:id", async function (request, response) {
 });
 
 app.post("/todos", async (request, response) => {
-  console.log("creating new todo", request.body);
+  console.log("creating a new todo", request.body);
   try {
     await Todo.addTodo({
       title: request.body.title,
       dueDate: request.body.dueDate,
-      commpleted: false,
+      completed: false,
     });
     return response.redirect("/");
   } catch (error) {

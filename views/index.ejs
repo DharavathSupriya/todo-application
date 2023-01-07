@@ -8,8 +8,9 @@
     <meta name="csrf-token" content="<%= csrfToken %>" />
     <title>To-Do Manager</title>
     <link rel="stylesheet" href="./css/styles.css" />
+    <script src="https://fontawesome.com/"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/js/tailcombinator.js"></script>
+    <script src="/js/tc.js"></script>
     <script>
             const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             const updateTodoStatus = (id, completed) => {
@@ -28,19 +29,19 @@
                 });
         }
             const deleteTodo = (id) => {
-            fetch(`/todos/${id}`, {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    "_csrf": token
-                }),
-            })
-                .then((data) => {
-                    window.location.reload();
-                });
-        }
+                fetch(`/todos/${id}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        "_csrf": token
+                    }),
+                })
+                    .then((data) => {
+                        window.location.reload();
+                    });
+            }
     </script>
 </head>
 

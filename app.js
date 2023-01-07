@@ -248,7 +248,7 @@ app.delete(
       await todo.removeTodo(request.user.id);
       return response.json({ success: true });
     } catch (error) {
-      return response.status(404).json({ success: false });
+      return response.status(422).json({ success: false });
     }
   }
 );

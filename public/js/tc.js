@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 const tc = {
   c: (pSelector, combs, callback) => {
     let combType = typeof combs;
@@ -11,6 +12,7 @@ const tc = {
       return;
     }
 
+    // eslint-disable-next-line no-undef
     const elements = document.querySelectorAll(pSelector);
     for (let i = 0; i < elements.length; i++) {
       for (let x = 0; x < combs.length; x++) {

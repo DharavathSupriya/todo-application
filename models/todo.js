@@ -56,6 +56,14 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
 
+    removeTodo(userId) {
+      if (this.userId === userId) {
+        return this.destroy();
+      } else {
+        throw new Error("Unauthorized");
+      }
+    }
+
     static dueLater(userId) {
       return this.findAll({
         where: {
@@ -75,14 +83,6 @@ module.exports = (sequelize, DataTypes) => {
           completed: true,
         },
       });
-    }
-
-    removeTodo(userId) {
-      if (this.userId === userId) {
-        return this.destroy();
-      } else {
-        throw new Error("Unauthorized");
-      }
     }
 
     setCompletionStatus(completed, userId) {

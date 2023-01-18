@@ -49,13 +49,13 @@ passport.use(
       User.findOne({ where: { email } })
         .then(async (user) => {
           if (!user) {
-            return done(null, false, { message: "Incorrect username." });
+            return done(null, false, { message: "Invalid Email." });
           }
           const result = await bcrypt.compare(password, user.password);
           if (result) {
             return done(null, user);
           } else {
-            return done(null, false, { message: "Incorrect password." });
+            return done(null, false, { message: "Invalid password." });
           }
         })
         .catch((err) => {
